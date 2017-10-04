@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 public class Main {//8193
     public static int k=0;
 
-     public  static synchronized void doSome(int d){
+    public  static synchronized void doSome(int d){
         k+=d;
     }
 

@@ -1,0 +1,24 @@
+SELECT id,name FROM suppliers WHERE phone = "23165498" OR id > 1 (выбор по условию)
+SELECT * FROM suppliers WHERE phone = "23165498" OR id > 1 (* - по всей таблице)
+SELECT id,name FROM suppliers ORDER BY email (сортировка)
+SELECT id,name FROM suppliers ORDER BY email DESC (обратная сортировка)
+
+
+INSERT INTO suppliers(id,date_reg,name,adress,phone,email) VALUES ("","","",...)  (вставка в таблицу)
+
+
+UPDATE suppliers SET phone = 11111111 WHERE id = 1 (изменение)
+
+
+DELETE FROM suppliers WHERE id = 3 (удалить)
+
+
+(транзакция)
+START TRANSACTION;
+INSERT INTO suppliers(date_reg,name,adress,phone,email) VALUES ("2017-10-2","Vitya","fghhh","45132698","nvskjdf@mail.ru");
+DELETE FROM suppliers WHERE id = 1000;
+ROLLBACK;(COMMIT; - до первой ошибки)
+
+
+3306 (порт)
+User1 - 1234
