@@ -12,9 +12,7 @@ public class Login extends JFrame{
 
     public Login() throws SQLException, ClassNotFoundException {
         JdbcConnection.init();
-
         setContentPane(panel1);
-
         inButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -25,6 +23,25 @@ public class Login extends JFrame{
                     pRep.login(login,password);
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null,e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                GameForm gameForm = new GameForm();
+                gameForm.setVisible(true);
+                setVisible(false);
+            }
+        });
+        regButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                try {
+                    RegistratoinForm registratoinForm = new RegistratoinForm();
+                    registratoinForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    registratoinForm.setVisible(true);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
                 }
             }
         });
