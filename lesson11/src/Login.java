@@ -25,7 +25,12 @@ public class Login extends JFrame{
                     JOptionPane.showMessageDialog(null,e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                GameForm gameForm = new GameForm();
+                GameForm gameForm = null;
+                try {
+                    gameForm = new GameForm();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
                 gameForm.setVisible(true);
                 setVisible(false);
             }

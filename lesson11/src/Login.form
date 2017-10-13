@@ -72,7 +72,9 @@
           </grid>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="1234"/>
+        </properties>
       </component>
       <component id="b82e8" class="javax.swing.JTextField" binding="login">
         <constraints>
@@ -81,7 +83,9 @@
           </grid>
           <forms defaultalign-horz="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="Vasya"/>
+        </properties>
       </component>
       <hspacer id="8bfd3">
         <constraints>
