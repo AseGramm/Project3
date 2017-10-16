@@ -1,5 +1,11 @@
 public class Record {
-    public int id_user;
+    public String name;
     public int score;
     public String time;
+
+    @Override
+    public String toString(){
+        String s = String.format("[%s]%s:%d\n",time,name,score);
+        return s;
+    }
 }

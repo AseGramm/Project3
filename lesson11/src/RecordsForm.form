@@ -7,11 +7,9 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="1b3f8" class="javax.swing.JTextField" binding="scoreField">
+      <component id="c3c09" class="javax.swing.JTextArea" binding="scoreField">
         <constraints border-constraint="Center"/>
-        <properties>
-          <editable value="false"/>
-        </properties>
+        <properties/>
       </component>
     </children>
   </grid>

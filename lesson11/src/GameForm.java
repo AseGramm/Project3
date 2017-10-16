@@ -33,18 +33,53 @@ public class GameForm extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String answer = setWordField.getText();
                 String correctAnswer = currentQuestion.answer;
+                setWordField.setText("");
                 if(answer.equalsIgnoreCase(correctAnswer)){
                     JOptionPane.showMessageDialog(null,"Вы угадали","Win",JOptionPane.INFORMATION_MESSAGE);
                     score += tryCount+2*hintsCount;
-                    //TODO проверить не последний ли это вопрос
-                    showNextQuestion();
+                    if(questionNumber==questions.size()){
+                        RecordsRep recordsRep = new RecordsRep();
+                        try {
+                            recordsRep.addRecord(PlayersRep.playerId,score);
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
+                        setVisible(false);
+                        RecordsForm recordsForm = null;
+                        try {
+                            recordsForm = new RecordsForm();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
+                        recordsForm.setVisible(true);
+                    }
+                    else{
+                        showNextQuestion();
+                    }
                 }
                 else{
                     tryCount--;
                     if(tryCount==0){
                         JOptionPane.showMessageDialog(null,"Вы проиграли. Правильный ответ "+currentQuestion.answer,"Lose",JOptionPane.INFORMATION_MESSAGE);
-                        //TODO проверить не последний ли это вопрос
-                        showNextQuestion();
+                        if(questionNumber==questions.size()){
+                            RecordsRep recordsRep = new RecordsRep();
+                            try {
+                                recordsRep.addRecord(PlayersRep.playerId,score);
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
+                            setVisible(false);
+                            RecordsForm recordsForm = null;
+                            try {
+                                recordsForm = new RecordsForm();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
+                            recordsForm.setVisible(true);
+                        }
+                        else{
+                            showNextQuestion();
+                        }
                     }
                     else{
                         updateTryCountLabelText();
@@ -69,8 +104,25 @@ public class GameForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"Вы проиграли. Правильный ответ "+currentQuestion.answer,"Lose",JOptionPane.INFORMATION_MESSAGE);
-                //TODO проверить не последний ли это вопрос
-                showNextQuestion();
+                if(questionNumber==questions.size()){
+                    RecordsRep recordsRep = new RecordsRep();
+                    try {
+                        recordsRep.addRecord(PlayersRep.playerId,score);
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
+                    setVisible(false);
+                    RecordsForm recordsForm = null;
+                    try {
+                        recordsForm = new RecordsForm();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
+                    recordsForm.setVisible(true);
+                }
+                else{
+                    showNextQuestion();
+                }
             }
         });
     }
